@@ -14,6 +14,9 @@ class Test : public GLWindow
 		GLfloat xRot, yRot, zRot;
     	GLfloat xTra, yTra, zTra;
     	GLfloat xSca, ySca, zSca, nSca;
+		GLUquadricObj* obj;
+		GLdouble baseRad, topRad, cyheight;
+		GLint stacks, slices;
 	protected:
 		void initGL(void);
 		void createsubwindows(void){};

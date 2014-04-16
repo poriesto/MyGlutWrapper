@@ -4,32 +4,40 @@
 void Test::render(void)
 {
 	std::cout << "Render" << std::endl;
-	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3f(1.0, 1.0, 1.0);
-	glBegin(GL_LINES);
-		for(int i = -rect.w/2; i<=rect.w/2;i+=20)
-		{
-			glVertex2f(i, -rect.w);
-			glVertex2f(i, rect.w);
-		}
-		for(int i = -rect.h/2; i<=rect.h;i+=20)
-		{
-			glVertex2f(-rect.h, i);
-			glVertex2f(rect.h, i);
-		}
-	glEnd();
-	glFlush();
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	glRotatef(xRot, 1.0f, 0.0f, 0.0f);
+    glRotatef(yRot, 0.0f, 1.0f, 0.0f);
+    glRotatef(zRot, 0.0f, 0.0f, 1.0f);
+    glTranslatef(xTra, yTra, zTra);
+    glScalef(nSca, nSca, nSca);
+
+	GLUquadric *cylinder = gluNewQuadric();
+    glPushMatrix ( );
+		glTranslatef(0, 0, 1);
+		gluQuadricDrawStyle (cylinder, GLU_LINE);
+		gluCylinder(cylinder, baseRad, topRad, cyheight, slices, stacks);
+    glPopMatrix ( );
+    glFlush ( );
 }
 
 void Test::initGL(void)
 {
 	std::cout << "Xyu" << std::endl;
-	glClearColor(0.0, 0.0, 0.0, 1.0);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(-rect.w/2,rect.w/2, -rect.h/2,rect.h/2, -200.0, 200.0);
-	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(50.0, -50.0, 0.0);
+	xRot = -45; yRot = 0; zTra = 0; nSca = 0.2; xTra = 0;
+	obj = gluNewQuadric(); baseRad = 1.0; topRad = 1.0;
+	slices = 25; stacks = 25;
+	cyheight = 20;
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
 }
 
 int main(void)
