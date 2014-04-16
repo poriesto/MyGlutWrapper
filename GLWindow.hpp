@@ -32,11 +32,11 @@ class GLWindow
 		static void Render(void){
 			app->render();
 		};
-		/*static void Mice(){app->mouse();};
+		/*static void Mice(int button, int state, int x, int y){app->mouse();};
 		static void Idle() {app->idlefunc();};
-		static void Keyboard() {app->keyboard();};
-		static void Motion() {app->motion();};
-		static void Resise() {app->resize();};*/
+		static void Keyboard(unsigned char key, int x, int y) {app->keyboard();};
+		static void Motion(void) {app->motion();};
+		static void Resise(int w, int h) {app->resize();};*/
 	public:
 		//seters
 		void setname(std::string name);
