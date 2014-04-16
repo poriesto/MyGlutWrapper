@@ -1,5 +1,4 @@
 #include "test.hpp"
-#include <iostream>
 
 void Test::render(void)
 {
@@ -16,7 +15,7 @@ void Test::render(void)
 
 	GLUquadric *cylinder = gluNewQuadric();
     glPushMatrix ( );
-		glTranslatef(0, 0, 1);
+		glTranslatef(0, 0, 0);
 		gluQuadricDrawStyle (cylinder, GLU_LINE);
 		gluCylinder(cylinder, baseRad, topRad, cyheight, slices, stacks);
     glPopMatrix ( );
@@ -25,11 +24,11 @@ void Test::render(void)
 
 void Test::initGL(void)
 {
-	std::cout << "Xyu" << std::endl;
+	std::cout << "initGL" << std::endl;
 	xRot = -45; yRot = 0; zTra = 0; nSca = 0.2; xTra = 0;
 	obj = gluNewQuadric(); baseRad = 1.0; topRad = 1.0;
 	slices = 25; stacks = 25;
-	cyheight = 20;
+	cyheight = 5;
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
@@ -61,7 +60,6 @@ void Test::keyboard(unsigned char key, int x, int y)
 			move_forward();
 			break;
 	}
-	updateGL();
 }
 
 int main(void)
@@ -70,10 +68,11 @@ int main(void)
 	std::string argv = "GLUT_RGB -w GLUT_RGBA";
 	unsigned int mode = GLUT_RGBA | GLUT_SINGLE;
 	Test* tst = new Test(0, mode);
+	//Test* tst = new Test();
 
 	tst->setname(name);
 	tst->setinitPosition(10, 10);
-	tst->setwidthheight(640, 480);
+	tst->setwidthheight(1280, 720);
 	tst->show();
 	return 0;
 }

@@ -16,28 +16,28 @@ class GLWindow
 		unsigned int mode;
 		std::string name;
 		void initMainwnd(void);
-		void resize(int w, int h);
-		void updateGL(void) { glutPostRedisplay();};
 		
-		//this methods must be implimented]
+		//this methods must be implimented
+		virtual void resize(int w, int h) = 0;
 		virtual void initGL(void){};
-		virtual void createsubwindows(void){};
+		virtual void createsubwindows(void) = 0;
 		virtual void render(void){};
 		virtual void keyboard(unsigned char key, int x, int y){};
 		virtual void mouse(int button, int state, int x, int y){};
-		virtual void motion(void){};
-		virtual void idlefunc(void){};
+		virtual void motion(int x, int y) = 0;
+		virtual void passmotion(int x, int y) = 0;
+		virtual void idlefunc(void) = 0;
 		
 		//dont touch this methods
 	private:
-		static void Render(void){
-			app->render();
-		};
-		/*static void Mice(int button, int state, int x, int y){app->mouse();};
-		static void Idle() {app->idlefunc();};*/
-		static void Keyboard(unsigned char key, int x, int y) {app->keyboard(key, x, y);};
-		/*static void Motion(void) {app->motion();};
-		static void Resise(int w, int h) {app->resize();};*/
+		static void Render(void);
+		static void Mice(int button, int state, int x, int y);
+		static void Idlefunc(void);
+		static void Keyboard(unsigned char key, int x, int y);
+		static void Motion(int x, int y);
+		static void PassiveMotion(int x, int y);
+		static void Resize(int w, int h);
+		static void Visible(int vis);
 	public:
 		//seters
 		void setname(std::string name);

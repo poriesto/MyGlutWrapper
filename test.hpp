@@ -1,6 +1,7 @@
 #include "GLWindow.hpp"
 #include <GL/glu.h>
 #include <GL/gl.h>
+#include <iostream>
 
 class Test : public GLWindow
 {
@@ -9,6 +10,10 @@ class Test : public GLWindow
 		{
 			this->subwindows = subwindows; this->mode = mode;
 		};
+		Test()
+		{
+			subwindows = 0; mode = GLUT_RGBA | GLUT_SINGLE;
+		}
 		~Test(void){};
 	private:
 		GLfloat xRot, yRot, zRot;
@@ -19,19 +24,29 @@ class Test : public GLWindow
 		GLint stacks, slices;
 
 		void move_forward(void)
-		{ yTra += 0.05; };
+		{ 
+			yTra += 0.05; 
+		};
 		void move_back(void)
-		{ yTra -= 0.05; };
+		{ 
+			yTra -= 0.05; 
+		};
 		void move_left(void)
-		{ xTra -= 0.05; };
+		{ 
+			xTra -= 0.05; 
+		};
 		void move_right(void)
-		{ xTra += 0.05; };
+		{ 
+			xTra += 0.05; 
+		};
 	protected:
+		void resize(int w, int h){};
 		void initGL(void);
 		void createsubwindows(void){};
+		void render(void);
 		void keyboard(unsigned char key, int x, int y);
 		void mouse(unsigned int button, int state, int x, int y){};
-		void render(void);
-		void motion(void){};
+		void motion(int x, int y){};
+		void passmotion(int x, int y){};
 		void idlefunc(void){};
 };
