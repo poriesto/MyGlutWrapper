@@ -40,6 +40,30 @@ void Test::initGL(void)
 	glEnableClientState(GL_COLOR_ARRAY);
 }
 
+void Test::keyboard(unsigned char key, int x, int y)
+{
+	std::cout << "Keyboard" << std::endl;
+	switch(key)
+	{
+		case 'q':
+			exit(0);
+			break;
+		case 's':
+			move_back();
+			break;
+		case 'a':
+			move_left();
+			break;
+		case 'd':
+			move_right();
+			break;
+		case 'w':
+			move_forward();
+			break;
+	}
+	updateGL();
+}
+
 int main(void)
 {
 	std::string name = "wnd";

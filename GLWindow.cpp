@@ -14,6 +14,7 @@ void GLWindow::initMainwnd(void)
 	main = glutCreateWindow(name.c_str());
 	app = this;
 	glutDisplayFunc(Render);
+	glutKeyboardUpFunc(Keyboard);
 }
 
 void GLWindow::setname(std::string name)

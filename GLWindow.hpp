@@ -17,6 +17,7 @@ class GLWindow
 		std::string name;
 		void initMainwnd(void);
 		void resize(int w, int h);
+		void updateGL(void) { glutPostRedisplay();};
 		
 		//this methods must be implimented]
 		virtual void initGL(void){};
@@ -33,9 +34,9 @@ class GLWindow
 			app->render();
 		};
 		/*static void Mice(int button, int state, int x, int y){app->mouse();};
-		static void Idle() {app->idlefunc();};
-		static void Keyboard(unsigned char key, int x, int y) {app->keyboard();};
-		static void Motion(void) {app->motion();};
+		static void Idle() {app->idlefunc();};*/
+		static void Keyboard(unsigned char key, int x, int y) {app->keyboard(key, x, y);};
+		/*static void Motion(void) {app->motion();};
 		static void Resise(int w, int h) {app->resize();};*/
 	public:
 		//seters

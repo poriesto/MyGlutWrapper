@@ -17,10 +17,19 @@ class Test : public GLWindow
 		GLUquadricObj* obj;
 		GLdouble baseRad, topRad, cyheight;
 		GLint stacks, slices;
+
+		void move_forward(void)
+		{ yTra += 0.05; };
+		void move_back(void)
+		{ yTra -= 0.05; };
+		void move_left(void)
+		{ xTra -= 0.05; };
+		void move_right(void)
+		{ xTra += 0.05; };
 	protected:
 		void initGL(void);
 		void createsubwindows(void){};
-		void keyboard(unsigned char key, int x, int y){};
+		void keyboard(unsigned char key, int x, int y);
 		void mouse(unsigned int button, int state, int x, int y){};
 		void render(void);
 		void motion(void){};
