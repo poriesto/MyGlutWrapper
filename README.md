@@ -8,3 +8,4 @@ You must implement the following methods:
 		virtual void mouse(int button, int state, int x, int y){};
 		virtual void motion(void){};
 		virtual void idlefunc(void){};
+Exmaple for use this class implemented in test.hpp and test.hpp;
