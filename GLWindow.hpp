@@ -44,9 +44,11 @@ class GLWindow
 		void setinitPosition(int x, int y);
 		void setwidthheight(int w, int h);
 		void setwidthheight(Rect rect);
+		
 		//geters
 		std::string getName(void);
 		Rect getRect(void);
+		
 		//show the window
 		void show(void){
 			initMainwnd();
