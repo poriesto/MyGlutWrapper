@@ -35,8 +35,6 @@
 		</Compiler>
 		<Unit filename="GLWindow.cpp" />
 		<Unit filename="GLWindow.hpp" />
-		<Unit filename="include/test2D.h" />
-		<Unit filename="src/test2D.cpp" />
 		<Unit filename="test.cpp" />
 		<Unit filename="test.hpp" />
 		<Extensions>

@@ -2,87 +2,18 @@
 
 void GLWindow::initMainwnd(void)
 {
-	char *ar[] = {"-w", "GLUT_RGB", "GLUT_DEPTH"};
-	app = this;
+    char *ar[] = {"-w", "GLUT_RGB", "GLUT_DEPTH"};
+    app = this;
 
-	glutInit(&argc,  ar);
-	glutInitDisplayMode(mode);
-	glutInitWindowSize(rect.w, rect.h);
-	glutInitWindowPosition(initPosx, initPosy);
-	main = glutCreateWindow(name.c_str());
-	glutDisplayFunc(Render);
-	glutKeyboardFunc(Keyboard);
-	glutVisibilityFunc(Visible);
-	glutMouseFunc(Mice);
-	glutMotionFunc(Motion);
-	glutPassiveMotionFunc(PassiveMotion);
-}
-//public methods
-void GLWindow::setname(std::string _name)
-{
-	name = _name;
-}
-
-void GLWindow::setinitPosition(int x, int y)
-{
-	initPosx = x; initPosy = y;
-}
-
-void GLWindow::setwidthheight(int w, int h)
-{
-	rect.w = w; rect.h = h;
-}
-
-void GLWindow::setwidthheight(Rect _rect)
-{
-	rect = _rect;
-}
-
-Rect GLWindow::getRect(void)
-{
-	return rect;
-}
-
-//private static methods
-void GLWindow::Render(void)
-{
-	app->render();
-}
-
-void GLWindow::Mice(int button, int state, int x, int y)
-{
-	app->mouse(button, state, x, y);
-	glutPostWindowRedisplay(app->main);
-}
-
-void GLWindow::Idlefunc(void)
-{
-	app->idlefunc();
-}
-
-void GLWindow::Keyboard(unsigned char key, int x, int y)
-{
-	app->keyboard(key, x, y);
-	glutPostWindowRedisplay(app->main);
-}
-
-void GLWindow::Motion(int x, int y)
-{
-	app->motion(x, y);
-}
-
-void GLWindow::PassiveMotion(int x, int y)
-{
-	app->passmotion(x, y);
-}
-
-void GLWindow::Resize(int w, int h)
-{
-	app->resize(w, h);
-	glutPostWindowRedisplay(app->main);
-}
-
-void GLWindow::Visible(int vis)
-{
-	glutPostWindowRedisplay(app->main);
+    glutInit(&argc,  ar);
+    glutInitDisplayMode(mode);
+    glutInitWindowSize(rect.w, rect.h);
+    glutInitWindowPosition(initPosx, initPosy);
+    main = glutCreateWindow(name.c_str());
+    glutDisplayFunc(Render);
+    glutKeyboardFunc(Keyboard);
+    glutVisibilityFunc(Visible);
+    glutMouseFunc(Mice);
+    glutMotionFunc(Motion);
+    glutPassiveMotionFunc(PassiveMotion);
 }
