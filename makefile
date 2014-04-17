@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -std=c++11 -Wall -o3 -Wwrite-strings
+CFLAGS = -std=c++11 -Wall -o3 -g -Weverything
 LIBS = -lGL -lGLU -lglut
 INC_PATH = /usr/include/GL
 
