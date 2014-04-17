@@ -37,6 +37,12 @@ void Test::initGL(void)
 
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
+
+	glLoadIdentity();
+	GLfloat ratio = (GLfloat)rect.h/rect.w;
+	if(rect.w >= rect.h) glOrtho(-1.0/ratio, 1.0/ratio, -1.0, 1.0, -10.0, 1.0);
+	else glOrtho(-1.0, 1.0, -1.0*ratio, 1.0*ratio, -10.0, 1.0);
+	glViewport(0, 0, rect.w, rect.h);
 }
 
 void Test::keyboard(unsigned char key, int x, int y)
@@ -48,16 +54,100 @@ void Test::keyboard(unsigned char key, int x, int y)
 			exit(0);
 			break;
 		case 's':
-			move_back();
+			move(2);
 			break;
 		case 'a':
-			move_left();
+			move(3);
 			break;
 		case 'd':
-			move_right();
+			move(4);
 			break;
 		case 'w':
-			move_forward();
+			move(1);
+			break;
+		case 'i':
+			rotate(1);
+			break;
+		case 'k':
+			rotate(2);
+			break;
+		case 'j':
+			rotate(3);
+			break;
+		case 'l':
+			rotate(4);
+			break;
+		case 't':
+			scale(2);
+			break;
+		case 'y':
+			scale(1);
+			break;
+	}
+}
+
+void Test::resize(int w, int h)
+{
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	GLfloat ratio = (GLfloat)h/w;
+	if(w >= h) glOrtho(-1.0/ratio, 1.0/ratio, -1.0, 1.0, -10.0, 1.0);
+	else glOrtho(-1.0, 1.0, -1.0*ratio, 1.0*ratio, -10.0, 1.0);
+	glViewport(0, 0, w, h);
+	rect.w = w; rect.h = h;
+}
+
+void Test::rotate(int dir)
+{
+	switch(dir)
+	{
+		case 1:
+			//up rotate
+			xRot += 1.0;
+			break;
+		case 2:
+			//down rotate;
+			xRot -= 1.0f;
+			break;
+		case 3:
+			//left
+			zRot += 1.0;
+			break;
+		case 4:
+			//right
+			zRot -= 1.0;
+			break;
+	}
+}
+
+void Test::move(int dir)
+{
+	switch(dir)
+	{
+		case 1:
+			yTra += 0.05;
+			break;
+		case 2:
+			yTra -= 0.05;
+			break;
+		case 3:
+			xTra -= 0.05;
+			break;
+		case 4:
+			xTra += 0.05;
+			break;
+	}
+}
+
+void Test::scale(int scale)
+{
+	switch(scale)
+	{
+		case 1:
+			nSca = nSca*1.1;
+			break;
+		case 2:
+			nSca = nSca/1.1;
 			break;
 	}
 }
@@ -68,11 +158,10 @@ int main(void)
 	std::string argv = "GLUT_RGB -w GLUT_RGBA";
 	unsigned int mode = GLUT_RGBA | GLUT_SINGLE;
 	Test* tst = new Test(0, mode);
-	//Test* tst = new Test();
 
 	tst->setname(name);
 	tst->setinitPosition(10, 10);
-	tst->setwidthheight(1280, 720);
+	tst->setwidthheight(640, 480);
 	tst->show();
 	return 0;
 }

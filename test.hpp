@@ -23,24 +23,11 @@ class Test : public GLWindow
 		GLdouble baseRad, topRad, cyheight;
 		GLint stacks, slices;
 
-		void move_forward(void)
-		{ 
-			yTra += 0.05; 
-		};
-		void move_back(void)
-		{ 
-			yTra -= 0.05; 
-		};
-		void move_left(void)
-		{ 
-			xTra -= 0.05; 
-		};
-		void move_right(void)
-		{ 
-			xTra += 0.05; 
-		};
+		void move(int dir);
+		void rotate(int dir);
+		void scale(int scale);
 	protected:
-		void resize(int w, int h){};
+		void resize(int w, int h);
 		void initGL(void);
 		void createsubwindows(void){};
 		void render(void);
