@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1397736540 source:/home/poriesto/ProjectsC++/GlutWrapper/GlutWrapper/GLWindow.cpp
+	"GLWindow.hpp"
+
+1397736551 /home/poriesto/ProjectsC++/GlutWrapper/GlutWrapper/GLWindow.hpp
+	<GL/glut.h>
+	<string>
+
+1397737034 source:/home/poriesto/ProjectsC++/GlutWrapper/GlutWrapper/test.cpp
+	"test.hpp"
+
+1397737095 /home/poriesto/ProjectsC++/GlutWrapper/GlutWrapper/test.hpp
+	"GLWindow.hpp"
+	<GL/glu.h>
+	<GL/gl.h>
+	<iostream>
+
+1397725882 source:/home/poriesto/ProjectsC++/GlutWrapper/GlutWrapper/src/test2D.cpp
+	"test2D.h"
+
+1397734109 /home/poriesto/ProjectsC++/GlutWrapper/GlutWrapper/include/test2D.h
+	"../GLWindow.hpp"
+	<GL/glu.h>
+	<GL/gl.h>
+	<iostream>
+
