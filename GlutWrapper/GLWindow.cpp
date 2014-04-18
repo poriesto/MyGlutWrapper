@@ -1,9 +1,12 @@
 #include "GLWindow.hpp"
-
-void GLWindow::initMainwnd(void)
+void GLWindow::initMainwnd(int argc, std::string argv)
 {
-    char *ar[] = {"-w", "GLUT_RGB", "GLUT_DEPTH"};
+    char *ar[argv.size()];
     app = this;
+    for(unsigned int i = 0; i < argv.size(); i++)
+    {
+        ar[i] = &argv[i];
+    }
 
     glutInit(&argc,  ar);
     glutInitDisplayMode(mode);

@@ -1,5 +1,17 @@
 #include "test.hpp"
 
+Test::Test()
+{
+    subwindows = 0;
+    mode = GLUT_SINGLE | GLUT_RGBA;
+}
+
+Test::Test(int _subwindows, unsigned int _mode)
+{
+    subwindows = _subwindows;
+    mode = _mode;
+}
+
 void Test::render(void)
 {
     std::cout << "Render" << std::endl;
@@ -28,7 +40,7 @@ void Test::initGL(void)
     xRot = -45;
     yRot = 0;
     zTra = 0;
-    nSca = 0.2;
+    nSca = 0.2f;
     xTra = 0;
     baseRad = 1.0;
     topRad = 1.0;
@@ -89,6 +101,21 @@ void Test::keyboard(unsigned char key, int x, int y)
         break;
     }
 }
+
+void Test::mouse(int button, int state, int x, int y)
+{}
+
+void Test::createsubwindows(void)
+{}
+
+void Test::idlefunc(void)
+{}
+
+void Test::motion(int x, int y)
+{}
+
+void Test::passmotion(int x, int y)
+{}
 
 void Test::resize(int w, int h)
 {
@@ -159,14 +186,17 @@ void Test::scale(int scale)
 
 int main(void)
 {
-    std::string name = "wnd";
-    std::string argv = "GLUT_RGB -w GLUT_RGBA";
+    std::string name = "wnd", argv = "-w GLUT_RGB GLUT_DEPTH";
+    int argc = 3;
     unsigned int mode = GLUT_RGBA | GLUT_SINGLE;
     Test* tst = new Test(0, mode);
+    Rect rct;
+    rct.w = 640; rct.h = 480;
 
     tst->setname(name);
     tst->setinitPosition(10, 10);
-    tst->setwidthheight(640, 480);
-    tst->show();
+    //tst->setwidthheight(640, 480);
+    tst->setwidthheight(rct);
+    tst->show(argc, argv);
     return 0;
 }

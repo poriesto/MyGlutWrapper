@@ -11,18 +11,18 @@ class GLWindow
 {
 protected:
     Rect rect;
-    int subwindows, initPosx, initPosy, main, argc;
+    int subwindows, initPosx, initPosy, main;
     unsigned int mode;
     std::string name;
-    void initMainwnd(void);
+    void initMainwnd(int argc, std::string argv);
 
     //this methods must be implimented
     virtual void resize(int w, int h) = 0;
-    virtual void initGL(void) {}
+    virtual void initGL(void) = 0;
     virtual void createsubwindows(void) = 0;
-    virtual void render(void) {}
-    virtual void keyboard(unsigned char key, int x, int y) {}
-    virtual void mouse(int button, int state, int x, int y) {}
+    virtual void render(void) = 0;
+    virtual void keyboard(unsigned char key, int x, int y) = 0;
+    virtual void mouse(int button, int state, int x, int y) = 0;
     virtual void motion(int x, int y) = 0;
     virtual void passmotion(int x, int y) = 0;
     virtual void idlefunc(void) = 0;
@@ -96,9 +96,9 @@ public:
     }
 
     //show the window
-    void show(void)
+    void show(int argc, std::string argv)
     {
-        initMainwnd();
+        initMainwnd(argc , argv);
         initGL();
         glutMainLoop();
     }
