@@ -2,7 +2,7 @@
 1397818973 source:/home/poriesto/ProjectsC++/GlutWrapper/GlutWrapper/GLWindow.cpp
 	"GLWindow.hpp"
 
-1397822293 /home/poriesto/ProjectsC++/GlutWrapper/GlutWrapper/GLWindow.hpp
+1397822355 /home/poriesto/ProjectsC++/GlutWrapper/GlutWrapper/GLWindow.hpp
 	<GL/glut.h>
 	<string>
 

@@ -28,6 +28,11 @@ class GLWindow
 		virtual void passmotion(int x, int y) = 0;
 		virtual void idlefunc(void) = 0;
 		
+		void close()
+		{
+			glutDestroyWindow(main);
+		}
+
 		//dont touch this methods
 	private:
 		static void Render(void);

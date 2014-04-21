@@ -1,7 +1,7 @@
-CC = clang++
-CFLAGS = -std=c++11 -Wall -o3 -g -Weverything
-LIBS = -lGL -lGLU -lglut
-INC_PATH = /usr/include/GL
+CC=clang++
+CFLAGS=-std=c++11 -Wall -o3 -g -Weverything
+LIBS=-lGL -lGLU -lglut
+INC_PATH=/usr/include/GL
 
 BUILD_DIR  := 
 SOURCE_DIR := 
@@ -14,7 +14,6 @@ $(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.cpp
 	$(CC) -c $(CFLAGS) $< -o $@
 
 all: $(BIN)
-
 $(BIN): $(OBJ)
 	$(CC) -o $(BUILD_DIR)$(BIN) $(OBJ) $(LIBS)
 clean:
