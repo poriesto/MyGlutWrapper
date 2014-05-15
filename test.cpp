@@ -152,13 +152,13 @@ void Test::scale(int scale)
 	}
 }
 
-int main(void)
+int main(int argc, const char *argv[])
 {
 	std::string name = "wnd";
-	std::string argv = "GLUT_RGB -w GLUT_RGBA";
-	unsigned int mode = GLUT_RGBA | GLUT_SINGLE;
+	std::string args = "GLUT_RGB -w GLUT_RGBA";
+	unsigned int mode = GLUT_RGBA|GLUT_SINGLE;
 	Test* tst = new Test(0, mode);
-
+	
 	tst->setname(name);
 	tst->setinitPosition(10, 10);
 	tst->setwidthheight(640, 480);

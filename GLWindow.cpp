@@ -47,6 +47,7 @@ Rect GLWindow::getRect(void)
 void GLWindow::Render(void)
 {
 	app->render();
+	glutSwapBuffers();
 }
 
 void GLWindow::Mice(int button, int state, int x, int y)
